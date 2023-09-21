@@ -1,25 +1,29 @@
 ﻿int doublePoint = 2;
 int tripplePoint = 6;
 int totalPoint;
-
-Console.WriteLine("==========Dice Game========= \nType 'Start' or 'S' to roll the dice: ");
+bool condition = true;
+while (condition)
+{
+    
+Console.Write("==========Dice Game========= \nType 'Start' or 'S' to roll the dice: ");
 
 string startGame = Console.ReadLine()!;
 
 if (!(startGame.Equals("Start", StringComparison.OrdinalIgnoreCase) || startGame.Equals("S", StringComparison.OrdinalIgnoreCase)))
 {
-    Console.WriteLine("Now enter 'Start' or 'S' to start the game and roll the dice properly properly:");
-    return;
+    Console.WriteLine("Invalid key provided");
+    condition = true;
 }
 
-
-Random random = new();
+else
+{
+    Random random = new();
 int diceOne = random.Next(1, 7);
 int diceTwo = random.Next(1, 7);
 int diceThree = random.Next(1, 7);
 totalPoint = diceOne + diceTwo + diceThree;
 
-Console.WriteLine($"Dice one {diceOne} \nDice Two {diceTwo} \nDice Three {diceThree}");
+Console.WriteLine($"Dice one: {diceOne} \nDice Two: {diceTwo} \nDice Three: {diceThree} \nTotal Point: {totalPoint} ");  
 
 //This checks if the three die are equal
 if (diceOne == diceTwo && diceTwo == diceThree)
@@ -79,4 +83,8 @@ else if (totalPoint >= 22 && totalPoint <= 24)
 else 
 {
     Console.WriteLine("Ohhhhhh sorry try again,we dont have price for this game you just played we so sorry and thanks for playing.");
+}
+condition = false;
+}
+
 }
